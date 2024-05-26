@@ -20,7 +20,7 @@ public static class CardDomain {
         card.cardFSMStatus = CardFSMStatus.None;
         card.Enter_Idle();
         card.Rotate_Entering = false;
-        card.Rotation_maintainTimer = 1f;
+        card.Rotation_maintainTime = 0f;
         card.Rotation_maintainInterval = 1f;
         card.id = tm.id;
         card.type = tm.type;

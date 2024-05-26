@@ -19,7 +19,7 @@ public class CardEntity : MonoBehaviour {
 
     public bool Rotate_Entering;
     // maintain
-    public float Rotation_maintainTimer;
+    public float Rotation_maintainTime;
 
     public float Rotation_maintainInterval;
 

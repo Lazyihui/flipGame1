@@ -37,13 +37,17 @@ public static class CardContraller {
             Debug.Log("Enter Rotate");
         }
 
-        card.Rotation_maintainInterval -= dt;
-        if (card.Rotation_maintainInterval <= 0) {
 
-            card.transform.rotation = Quaternion.Euler(0, 180, 0);
+        float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
+        float value = 180 * t;
+        card.transform.rotation = Quaternion.Euler(0, value, 0);
+
+        card.Rotation_maintainTime += dt;
+
+        if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
 
             card.Enter_Idle();
-            card.Rotation_maintainInterval = card.Rotation_maintainTimer;
+
             return;
         }
 
