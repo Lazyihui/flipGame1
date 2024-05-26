@@ -7,14 +7,14 @@ public static class GameBusiness {
 
 
         CardDomain.Spawn(ctx, 1, new Vector3(0, 0, 0));
-        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 0, 0));
-        // CardDomain.Spawn(ctx, 2, new Vector3(4, 0, 0));
-        // CardDomain.Spawn(ctx, 4, new Vector3(0, 4, 0));
-        // CardDomain.Spawn(ctx, 1, new Vector3(0, -4, 0));
-        // CardDomain.Spawn(ctx, 2, new Vector3(4, 4, 0));
-        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 4, 0));
-        // CardDomain.Spawn(ctx, 4, new Vector3(4, -4, 0));
-        // CardDomain.Spawn(ctx, 5, new Vector3(-4, -4, 0));
+        CardDomain.Spawn(ctx, 3, new Vector3(-4, 0, 0));
+        CardDomain.Spawn(ctx, 2, new Vector3(4, 0, 0));
+        CardDomain.Spawn(ctx, 4, new Vector3(0, 4, 0));
+        CardDomain.Spawn(ctx, 1, new Vector3(0, -4, 0));
+        CardDomain.Spawn(ctx, 2, new Vector3(4, 4, 0));
+        CardDomain.Spawn(ctx, 3, new Vector3(-4, 4, 0));
+        CardDomain.Spawn(ctx, 4, new Vector3(4, -4, 0));
+        CardDomain.Spawn(ctx, 5, new Vector3(-4, -4, 0));
     }
 
 
@@ -41,7 +41,7 @@ public static class GameBusiness {
             CardEntity card = cards[i];
 
             CardDomain.RotateCard(ctx, card, dt);
-            
+
             CardContraller.Tick(ctx, card, dt);
         }
     }

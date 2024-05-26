@@ -27,7 +27,7 @@ public static class CardDomain {
         card.Rotation_maintainInterval = 1f;
         card.MouseEnter_maintainTime = 0f;
         card.MouseEnter_maintainInterval = 1f;
-        card.id = tm.id;
+        card.id = ctx.cardCount++;
         card.type = tm.type;
         card.typeName = tm.typeName;
         card.SetMaterial(tm.material);
@@ -44,13 +44,11 @@ public static class CardDomain {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
             if (hit.collider.gameObject == card.gameObject) {
-                Debug.Log("MouseInside");
-                card.Enter_MouseEnter();
+
                 card.MouseInside = true;
                 return true;
             }
         }
-        card.Enter_MouseExit();
         card.MouseInside = false;
         return false;
 
@@ -63,7 +61,6 @@ public static class CardDomain {
         if (MouseInsideCard(ctx, card) && Input.GetMouseButtonDown(0)) {
 
             card.Enter_Rotate();
-            Debug.Log("Rotate");
 
         }
     }

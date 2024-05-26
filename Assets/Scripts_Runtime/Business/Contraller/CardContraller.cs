@@ -29,7 +29,6 @@ public static class CardContraller {
     static void Idle(BusinessContext ctx, CardEntity card, float dt) {
         if (card.Idle_Entering) {
             card.Idle_Entering = false;
-            Debug.Log("Enter Idle");
         }
 
 
@@ -38,7 +37,6 @@ public static class CardContraller {
     static void Rotate(BusinessContext ctx, CardEntity card, float dt) {
         if (card.Rotate_Entering) {
             card.Rotate_Entering = false;
-            Debug.Log("Enter Rotate");
         }
 
         float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
