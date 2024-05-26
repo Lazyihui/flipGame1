@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a2321f1d681b7a4793dbdc04e05a401, type: 3}
-  m_Name: TM_Card
+  m_Name: TM_Card_water
   m_EditorClassIdentifier: 
-  id: 1
-  type: 0
-  typeName: 
-  material: {fileID: 2100000, guid: fcf3adaf1798b33489138b44ba9e56f7, type: 2}
+  id: 8
+  type: 8
+  typeName: water
+  material: {fileID: 2100000, guid: be567e189ad480b419ca13e256ac2cbc, type: 2}

@@ -5,8 +5,16 @@ public static class GameBusiness {
 
     public static void Enter(BusinessContext ctx) {
 
-        CardDomain.Spawn(ctx, 1);
 
+        CardDomain.Spawn(ctx, 1, new Vector3(0, 0, 0));
+        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 0, 0));
+        // CardDomain.Spawn(ctx, 2, new Vector3(4, 0, 0));
+        // CardDomain.Spawn(ctx, 4, new Vector3(0, 4, 0));
+        // CardDomain.Spawn(ctx, 1, new Vector3(0, -4, 0));
+        // CardDomain.Spawn(ctx, 2, new Vector3(4, 4, 0));
+        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 4, 0));
+        // CardDomain.Spawn(ctx, 4, new Vector3(4, -4, 0));
+        // CardDomain.Spawn(ctx, 5, new Vector3(-4, -4, 0));
     }
 
 
@@ -31,18 +39,10 @@ public static class GameBusiness {
         int cardLenth = ctx.cardRepository.TakeAll(out CardEntity[] cards);
         for (int i = 0; i < cardLenth; i++) {
             CardEntity card = cards[i];
-            bool isMouseInsideCard = CardDomain.MouseInsideCard(ctx, card);
-            if (isMouseInsideCard && ctx.inputEntity.isMouseLeftDown) {
 
-                card.transform.rotation = Quaternion.Euler(0, 180, 0);
-                
-                Debug.Log("鼠标在卡片上");
-            }
-            // if (CardDomain.MouseInsideCard(ctx, card)) {
-            //     card.SetMaterial(Color.red);
-            // } else {
-            //     card.SetMaterial(Color.white);
-            // }
+            CardDomain.RotateCard(ctx, card, dt);
+            
+            CardContraller.Tick(ctx, card, dt);
         }
     }
     public static void LateTick(BusinessContext ctx, float dt) {

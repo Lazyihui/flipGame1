@@ -23,6 +23,48 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Card
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7225144b5bf079744adb6b253601d927
+    m_Address: TM_Card_banana
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef3f94deddaf2dd47a355267e6ff330b
+    m_Address: TM_Card_bear
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1ed2b44e0487d04595a058d76337a52
+    m_Address: TM_Card_len
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 617c1e0de9a92c0419e4161b5173d9d7
+    m_Address: TM_Card_orange
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ecb069d40f1edd49bc14aee97b7cd0b
+    m_Address: TM_Card_pa
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92f4c63e0b8b47e40adb54fc70b781aa
+    m_Address: TM_Card_star
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f41b51e30afe22a4092d19ca5779c9c7
+    m_Address: TM_Card_water
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Card
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e90df8b33ae52f64383a6069f05ea9f2, type: 2}
   m_SchemaSet:
