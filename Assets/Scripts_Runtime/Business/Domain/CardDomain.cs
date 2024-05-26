@@ -28,7 +28,14 @@ public static class CardDomain {
     }
 
     // 鼠标和卡片的交叉检测
-    public static bool MouseInsideCard(CardEntity card) {
+    public static bool MouseInsideCard(BusinessContext ctx,CardEntity card) {
+        Ray ray = ctx.mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)) {
+            if (hit.collider.gameObject == card.gameObject) {
+                return true;
+            }
+        }
 
         return false;
 
