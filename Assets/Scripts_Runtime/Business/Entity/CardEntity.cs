@@ -18,10 +18,20 @@ public class CardEntity : MonoBehaviour {
     public bool Idle_Entering;
 
     public bool Rotate_Entering;
+
+    public bool mouseEnter_Entering;
+
+    public bool mouseExit_Entering;
     // maintain
     public float Rotation_maintainTime;
 
     public float Rotation_maintainInterval;
+
+    public float MouseEnter_maintainTime;
+
+    public float MouseEnter_maintainInterval;
+
+    public bool MouseInside;
 
     public void  Ctor() { }
 
@@ -41,6 +51,16 @@ public class CardEntity : MonoBehaviour {
     public void Enter_Rotate() {
         cardFSMStatus = CardFSMStatus.Rotate;
         Rotate_Entering = true;
+    }
+
+    public void Enter_MouseEnter() {
+        cardFSMStatus = CardFSMStatus.mouseEnter;
+        mouseEnter_Entering = true;
+    }
+
+    public void Enter_MouseExit() {
+        cardFSMStatus = CardFSMStatus.mouseExit;
+        mouseExit_Entering = true;
     }
 
 }

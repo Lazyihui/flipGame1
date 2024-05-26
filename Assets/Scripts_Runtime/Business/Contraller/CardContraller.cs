@@ -13,8 +13,12 @@ public static class CardContraller {
         } else if (status == CardFSMStatus.Rotate) {
             Rotate(ctx, card, dt);
 
+        } else if (status == CardFSMStatus.mouseEnter) {
+            MouseEnter(ctx, card, dt);
+        } else if (status == CardFSMStatus.mouseExit) {
+
         } else {
-            Debug.Log("未知状态,状态机异常");
+            Debug.LogError("没有找到对应的状态");
         }
         Any_State(ctx, card, dt);
     }
@@ -37,7 +41,6 @@ public static class CardContraller {
             Debug.Log("Enter Rotate");
         }
 
-
         float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
         float value = 180 * t;
         card.transform.rotation = Quaternion.Euler(0, value, 0);
@@ -45,11 +48,28 @@ public static class CardContraller {
         card.Rotation_maintainTime += dt;
 
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
-
             card.Enter_Idle();
-
             return;
         }
+    }
+
+    static void MouseEnter(BusinessContext ctx, CardEntity card, float dt) {
+        if (card.mouseEnter_Entering) {
+            card.mouseEnter_Entering = false;
+            Debug.Log("Enter MouseEnter");
+        }
+        // card 左右摇摆
+        float t = card.MouseEnter_maintainTime / card.MouseEnter_maintainInterval;
+        float value = 20 * t;
+        card.transform.rotation = Quaternion.Euler(0, value, 0);
+
+        card.MouseEnter_maintainTime += dt;
+        if (card.MouseEnter_maintainTime >= card.MouseEnter_maintainInterval) {
+
+            card.MouseEnter_maintainTime = 0;
+            return;
+        }
+
 
 
     }
