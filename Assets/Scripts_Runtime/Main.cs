@@ -10,11 +10,12 @@ public class Main : MonoBehaviour {
     void Awake() {
 
         ctx = new Context();
+        ctx.Inject();
 
-        ModuleAssets.Load(ctx.businessContext.assetsContext);
+        ModuleAssets.Load(ctx.assetsContext);
+        TemplateInfras.Load(ctx.templateContext);
 
         GameBusiness.Enter(ctx.businessContext);
-
 
     }
 
@@ -34,6 +35,7 @@ public class Main : MonoBehaviour {
             return;
         }
         isTearDown = true;
-        ModuleAssets.Unload(ctx.businessContext.assetsContext);
+        ModuleAssets.Unload(ctx.assetsContext);
+        TemplateInfras.Unload(ctx.templateContext);
     }
 }
