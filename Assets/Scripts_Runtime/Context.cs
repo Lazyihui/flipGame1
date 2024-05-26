@@ -8,6 +8,8 @@ public class Context {
     public AssetsContext assetsContext;
     public TemplateContext templateContext;
 
+    public Camera mainCamera;
+
 
     public Context() {
         businessContext = new BusinessContext();
@@ -15,8 +17,8 @@ public class Context {
         templateContext = new TemplateContext();
     }
 
-    public void Inject() {
-        businessContext.Inject(templateContext,assetsContext);
+    public void Inject(Camera mainCamera) {
+        businessContext.Inject(templateContext,assetsContext,mainCamera);
     }
 
 }
