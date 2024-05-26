@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f9249af380982d64ab472836f8856f11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,10 +122,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cafc9b0a5a36b4786c009308fd79b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 1138056321819204130}
+  back: {fileID: 1138056321819204130}
+  cardColor: {fileID: 6073325916370943060}
   id: 0
   type: 0
   typeName: 
+  cardFSMStatus: 0
+  Idle_Entering: 0
+  Rotate_Entering: 0
+  mouseEnter_Entering: 0
+  mouseExit_Entering: 0
+  Rotation_maintainTime: 0
+  Rotation_maintainInterval: 0
+  MouseEnter_maintainTime: 0
+  MouseEnter_maintainInterval: 0
+  MouseInside: 0
 --- !u!1 &5068678533694777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +274,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5303038595923075036}

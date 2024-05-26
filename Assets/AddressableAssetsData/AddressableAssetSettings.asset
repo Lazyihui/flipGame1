@@ -93,6 +93,8 @@ MonoBehaviour:
     - default
     - Entity
     - TM_Card
+    - Material
+    - TM_Bg
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8d3d48217aa707846b81e56b2b9e641e, type: 2}
