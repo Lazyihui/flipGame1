@@ -22,11 +22,26 @@ public class TemplateInfras {
 
         }
 
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "TM_Bg";
+            var ptr = Addressables.LoadAssetsAsync<BgTM>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                ctx.bgs.Add(go.id, go);
+            }
+            ctx.bgPtr = ptr;
+
+        }
+
     }
 
     public static void Unload(TemplateContext ctx) {
         if (ctx.cardPtr.IsValid()) {
             Addressables.Release(ctx.cardPtr);
+        }
+        if (ctx.bgPtr.IsValid()) {
+            Addressables.Release(ctx.bgPtr);
         }
     }
 }

@@ -12,9 +12,13 @@ public class TemplateContext {
 
     public AsyncOperationHandle cardPtr;
 
+    public Dictionary<int,BgTM> bgs;
+
+    public AsyncOperationHandle bgPtr;
 
     public TemplateContext() {
         cards = new Dictionary<int, CardTM>();
+        bgs = new Dictionary<int, BgTM>();
     }
 
 }
