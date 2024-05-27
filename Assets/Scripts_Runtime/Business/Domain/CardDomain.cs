@@ -56,7 +56,6 @@ public static class CardDomain {
         }
         card.MouseInside = false;
         return false;
-
     }
     // 如果MouseInsideCard card缓动旋转180度
     // 缓动的转180度
@@ -65,7 +64,6 @@ public static class CardDomain {
     public static void Enter_Rotate(BusinessContext ctx, CardEntity card, float dt) {
         if (MouseInsideCard(ctx, card) && Input.GetMouseButtonDown(0)) {
 
-            ctx.cards.Add(card);
 
             card.Enter_Rotate();
 
@@ -84,16 +82,18 @@ public static class CardDomain {
                 Debug.Log("相同");
                 card1.Enter_Idle();
                 card2.Enter_Idle();
+                ctx.cards.Clear();
+
 
             } else {
                 Debug.Log("不相同");
                 card1.Enter_ReRetate();
                 card2.Enter_ReRetate();
+                ctx.cards.Clear();
 
             }
 
 
-            ctx.cards.Clear();
         }
 
     }

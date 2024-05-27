@@ -42,6 +42,7 @@ public static class CardContraller {
             card.Rotate_Entering = false;
         }
 
+
         float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
         float value = 180 * t;
         card.transform.rotation = Quaternion.Euler(0, value, 0);
@@ -50,6 +51,9 @@ public static class CardContraller {
 
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
             Debug.Log(card.id);
+
+            ctx.cards.Add(card);
+
             card.Enter_Idle();
             return;
         }
@@ -60,7 +64,6 @@ public static class CardContraller {
             card.ReRetate_Entering = false;
         }
 
-        Debug.Log(card.id + "ReRotate");
         card.Rotation_maintainInterval = 2f;
         float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
         float value = 360 * t;
