@@ -28,7 +28,6 @@ public static class CardDomain {
         card.Rotate_Entering = false;
         card.mouseEnter_Entering = false;
         card.mouseExit_Entering = false;
-        card.isRotatingOver = false;
         card.Rotation_maintainTime = 0f;
         card.Rotation_maintainInterval = 1f;
         card.MouseEnter_maintainTime = 0f;

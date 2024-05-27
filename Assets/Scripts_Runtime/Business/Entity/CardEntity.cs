@@ -35,7 +35,6 @@ public class CardEntity : MonoBehaviour {
 
     public bool MouseInside;
 
-    public bool isRotatingOver;
 
     public void Ctor() { }
 
