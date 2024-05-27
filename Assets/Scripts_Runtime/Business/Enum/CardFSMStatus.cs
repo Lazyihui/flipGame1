@@ -6,6 +6,8 @@ public enum CardFSMStatus {
 
     Rotate,
 
+    ReRetate,
+
     mouseEnter,
     mouseExit,
 

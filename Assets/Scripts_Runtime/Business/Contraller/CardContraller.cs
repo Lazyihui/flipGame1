@@ -17,6 +17,9 @@ public static class CardContraller {
             MouseEnter(ctx, card, dt);
         } else if (status == CardFSMStatus.mouseExit) {
 
+        } else if (status == CardFSMStatus.ReRetate) {
+            ReRotate(ctx, card, dt);
+
         } else {
             Debug.LogError("没有找到对应的状态");
         }
@@ -46,11 +49,31 @@ public static class CardContraller {
         card.Rotation_maintainTime += dt;
 
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
+            Debug.Log(card.id);
             card.Enter_Idle();
             return;
         }
     }
 
+    public static void ReRotate(BusinessContext ctx, CardEntity card, float dt) {
+        if (card.ReRetate_Entering) {
+            card.ReRetate_Entering = false;
+        }
+
+        Debug.Log(card.id + "ReRotate");
+        card.Rotation_maintainInterval = 2f;
+        float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
+        float value = 360 * t;
+        // 从180度开始转到0
+        card.transform.rotation = Quaternion.Euler(0, -value, 0);
+
+        // card.transform.rotation = Quaternion.Euler(0, value, 0);
+        card.Rotation_maintainTime += dt;
+        if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
+            card.Enter_Idle();
+            return;
+        }
+    }
     static void MouseEnter(BusinessContext ctx, CardEntity card, float dt) {
         if (card.mouseEnter_Entering) {
             card.mouseEnter_Entering = false;

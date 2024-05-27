@@ -19,6 +19,8 @@ public class CardEntity : MonoBehaviour {
 
     public bool Rotate_Entering;
 
+    public bool ReRetate_Entering;
+
     public bool mouseEnter_Entering;
 
     public bool mouseExit_Entering;
@@ -33,7 +35,9 @@ public class CardEntity : MonoBehaviour {
 
     public bool MouseInside;
 
-    public void  Ctor() { }
+    public bool isRotatingOver;
+
+    public void Ctor() { }
 
     public void SetMaterial(Material material) {
         meshRenderer.material = material;
@@ -51,6 +55,10 @@ public class CardEntity : MonoBehaviour {
     public void Enter_Rotate() {
         cardFSMStatus = CardFSMStatus.Rotate;
         Rotate_Entering = true;
+    }
+    public void Enter_ReRetate() {
+        cardFSMStatus = CardFSMStatus.ReRetate;
+        ReRetate_Entering = true;
     }
 
     public void Enter_MouseEnter() {

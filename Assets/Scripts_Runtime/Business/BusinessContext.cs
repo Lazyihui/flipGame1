@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BusinessContext {
@@ -13,12 +15,15 @@ public class BusinessContext {
 
     public CardRepository cardRepository;
 
+    public List<CardEntity> cards; 
+
 
     public int cardCount;
     public BusinessContext() {
         cardRepository = new CardRepository();
         inputEntity = new InputEntity();
         cardCount = 0;
+        cards = new List<CardEntity>();
     }
 
     public void Inject(TemplateContext templateContext, AssetsContext assetsContext, Camera mainCamera) {

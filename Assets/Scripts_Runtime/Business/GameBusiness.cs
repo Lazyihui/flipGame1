@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameBusiness {
@@ -40,11 +42,20 @@ public static class GameBusiness {
         for (int i = 0; i < cardLenth; i++) {
             CardEntity card = cards[i];
 
-            CardDomain.RotateCard(ctx, card, dt);
+            CardDomain.Enter_Rotate(ctx, card, dt);
+
 
             CardContraller.Tick(ctx, card, dt);
+
         }
     }
+
+    // static IEnumerator IE(BusinessContext ctx, float dt) {
+    //     yield return new WaitForSeconds(1f);
+    //     CardDomain.CardIsEqual(ctx, dt);
+
+    // }
+
     public static void LateTick(BusinessContext ctx, float dt) {
 
         ctx.inputEntity.Reset();
