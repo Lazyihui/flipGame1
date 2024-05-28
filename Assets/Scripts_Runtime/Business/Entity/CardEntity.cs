@@ -33,9 +33,8 @@ public class CardEntity : MonoBehaviour {
 
     public float MouseEnter_maintainInterval;
 
-    public bool MouseInside;
-
-
+    // 如果没有旋转则可以旋转 没有旋转才可以旋转
+    public bool ishasRotate;
     public void Ctor() { }
 
     public void SetMaterial(Material material) {

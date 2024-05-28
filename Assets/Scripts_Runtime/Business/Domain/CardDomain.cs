@@ -24,10 +24,10 @@ public static class CardDomain {
         card.Ctor();
         card.cardFSMStatus = CardFSMStatus.None;
         card.Enter_Idle();
-        card.MouseInside = false;
         card.Rotate_Entering = false;
         card.mouseEnter_Entering = false;
         card.mouseExit_Entering = false;
+        card.ishasRotate = false;
         card.Rotation_maintainTime = 0f;
         card.Rotation_maintainInterval = 1f;
         card.MouseEnter_maintainTime = 0f;
@@ -49,12 +49,9 @@ public static class CardDomain {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
             if (hit.collider.gameObject == card.gameObject) {
-
-                card.MouseInside = true;
                 return true;
             }
         }
-        card.MouseInside = false;
         return false;
     }
     // 如果MouseInsideCard card缓动旋转180度
@@ -65,7 +62,10 @@ public static class CardDomain {
         if (MouseInsideCard(ctx, card) && Input.GetMouseButtonDown(0)) {
 
 
-            card.Enter_Rotate();
+            if (!card.ishasRotate) {
+                card.Enter_Rotate();
+            }
+
 
         }
     }
@@ -80,8 +80,10 @@ public static class CardDomain {
             ctx.cardRepository.TryGet(ctx.cards[1].id, out CardEntity card2);
             if (card1.type == card2.type) {
                 Debug.Log("相同");
+                
                 card1.Enter_Idle();
                 card2.Enter_Idle();
+
                 ctx.cards.Clear();
 
 

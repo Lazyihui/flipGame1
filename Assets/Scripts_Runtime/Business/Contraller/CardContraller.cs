@@ -40,6 +40,7 @@ public static class CardContraller {
     static void Rotate(BusinessContext ctx, CardEntity card, float dt) {
         if (card.Rotate_Entering) {
             card.Rotate_Entering = false;
+            card.ishasRotate = true;
         }
 
 
@@ -51,10 +52,12 @@ public static class CardContraller {
 
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
             Debug.Log(card.id);
+            card.Enter_Idle();
 
             ctx.cards.Add(card);
+            card.ishasRotate = false;
 
-            card.Enter_Idle();
+
             return;
         }
     }
@@ -73,8 +76,12 @@ public static class CardContraller {
         // card.transform.rotation = Quaternion.Euler(0, value, 0);
         card.Rotation_maintainTime += dt;
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
+
             card.Enter_Idle();
+            Quaternion ori = Quaternion.Euler(0, 0, 0);
+            card.transform.rotation = ori;
             return;
+
         }
     }
     static void MouseEnter(BusinessContext ctx, CardEntity card, float dt) {
