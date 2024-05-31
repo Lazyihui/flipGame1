@@ -60,19 +60,26 @@ public static class CardDomain {
     public static void RotateDone(BusinessContext ctx, CardEntity card) {
         ctx.cards.Add(card);
 
+        Debug.Log(ctx.cards.Count);
+        
         int count = ctx.cards.Count;
+        
         if (count == 2) {
+
             CardEntity card1 = ctx.cards[0];
             CardEntity card2 = ctx.cards[1];
+
             if (card1.type == card2.type) {
+                Debug.Log("相同");
                 card1.Enter_Idle();
                 card2.Enter_Idle();
+                ctx.cards.Clear();
 
-                Debug.Log("相同");
             } else {
+                Debug.Log("不相同");
                 card1.Enter_ReRetate();
                 card2.Enter_ReRetate();
-                Debug.Log("不相同");
+                ctx.cards.Clear();
             }
         } else {
             card.Enter_Idle();

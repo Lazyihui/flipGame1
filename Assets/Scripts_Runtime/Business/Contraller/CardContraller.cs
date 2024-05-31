@@ -54,12 +54,11 @@ public static class CardContraller {
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
 
 
-            card.Enter_Idle();
             CardDomain.RotateDone(ctx, card);
             card.ishasRotate = false;
 
 
-           
+
             return;
         }
     }
@@ -69,10 +68,9 @@ public static class CardContraller {
             card.ReRetate_Entering = false;
         }
 
-        float maintainTime = 2;
 
 
-        float t = maintainTime / 2;
+        float t = card.Rotation_maintainTime / 2;
         float value = 360 * t;
         // 从180度开始转到0
         card.transform.rotation = Quaternion.Euler(0, -value, 0);
