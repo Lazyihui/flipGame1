@@ -40,24 +40,26 @@ public static class CardContraller {
     static void Rotate(BusinessContext ctx, CardEntity card, float dt) {
         if (card.Rotate_Entering) {
             card.Rotate_Entering = false;
+            card.Rotation_maintainTime = 0;
             card.ishasRotate = true;
         }
 
 
-        float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
+        float t = card.Rotation_maintainTime / 1;
         float value = 180 * t;
         card.transform.rotation = Quaternion.Euler(0, value, 0);
 
         card.Rotation_maintainTime += dt;
 
         if (card.Rotation_maintainTime >= card.Rotation_maintainInterval) {
-            Debug.Log(card.id);
-            card.Enter_Idle();
 
-            ctx.cards.Add(card);
+
+            card.Enter_Idle();
+            CardDomain.RotateDone(ctx, card);
             card.ishasRotate = false;
 
 
+           
             return;
         }
     }
@@ -67,8 +69,10 @@ public static class CardContraller {
             card.ReRetate_Entering = false;
         }
 
-        card.Rotation_maintainInterval = 2f;
-        float t = card.Rotation_maintainTime / card.Rotation_maintainInterval;
+        float maintainTime = 2;
+
+
+        float t = maintainTime / 2;
         float value = 360 * t;
         // 从180度开始转到0
         card.transform.rotation = Quaternion.Euler(0, -value, 0);

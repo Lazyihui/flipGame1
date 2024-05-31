@@ -57,10 +57,31 @@ public static class CardDomain {
     // 如果MouseInsideCard card缓动旋转180度
     // 缓动的转180度
 
+    public static void RotateDone(BusinessContext ctx, CardEntity card) {
+        ctx.cards.Add(card);
+
+        int count = ctx.cards.Count;
+        if (count == 2) {
+            CardEntity card1 = ctx.cards[0];
+            CardEntity card2 = ctx.cards[1];
+            if (card1.type == card2.type) {
+                card1.Enter_Idle();
+                card2.Enter_Idle();
+
+                Debug.Log("相同");
+            } else {
+                card1.Enter_ReRetate();
+                card2.Enter_ReRetate();
+                Debug.Log("不相同");
+            }
+        } else {
+            card.Enter_Idle();
+        }
+
+    }
 
     public static void Enter_Rotate(BusinessContext ctx, CardEntity card, float dt) {
         if (MouseInsideCard(ctx, card) && Input.GetMouseButtonDown(0)) {
-
 
             if (!card.ishasRotate) {
                 card.Enter_Rotate();
@@ -71,35 +92,6 @@ public static class CardDomain {
     }
 
     // 前面点击的name和这个name是否一样
-
-    public static void CardIsEqual(BusinessContext ctx, float dt) {
-
-        int count = ctx.cards.Count;
-        if (count == 2) {
-            ctx.cardRepository.TryGet(ctx.cards[0].id, out CardEntity card1);
-            ctx.cardRepository.TryGet(ctx.cards[1].id, out CardEntity card2);
-            if (card1.type == card2.type) {
-                Debug.Log("相同");
-                
-                card1.Enter_Idle();
-                card2.Enter_Idle();
-
-                ctx.cards.Clear();
-
-
-            } else {
-                Debug.Log("不相同");
-                card1.Enter_ReRetate();
-                card2.Enter_ReRetate();
-                ctx.cards.Clear();
-
-            }
-
-
-        }
-
-    }
-
 
 
 

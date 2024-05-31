@@ -22,12 +22,6 @@ public class Main : MonoBehaviour {
 
     }
 
-
-    IEnumerator IE(BusinessContext ctx, float dt) {
-        yield return new WaitForSeconds(1.5f);
-        CardDomain.CardIsEqual(ctx, dt);
-
-    }
     float restDT = 0;
     void Update() {
         float dt = Time.deltaTime;
@@ -42,11 +36,9 @@ public class Main : MonoBehaviour {
             while (restDT >= fixedDT) {
                 restDT -= fixedDT;
                 FixedTick(fixedDT);
-                this.StartCoroutine(IE(ctx.businessContext, fixedDT));
             }
         } else {
             FixedTick(restDT);
-            this.StartCoroutine(IE(ctx.businessContext, restDT));
             restDT = 0;
         }
 
