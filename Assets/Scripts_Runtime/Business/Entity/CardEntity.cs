@@ -27,7 +27,7 @@ public class CardEntity : MonoBehaviour {
     // maintain
     public float Rotation_maintainTime;
 
-    public float Rotation_maintainInterval;
+    public float ReRotation_maintainTime;
 
     public float MouseEnter_maintainTime;
 

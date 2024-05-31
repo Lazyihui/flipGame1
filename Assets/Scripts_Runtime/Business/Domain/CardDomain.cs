@@ -29,7 +29,7 @@ public static class CardDomain {
         card.mouseExit_Entering = false;
         card.ishasRotate = false;
         card.Rotation_maintainTime = 0f;
-        card.Rotation_maintainInterval = 1f;
+        card.ReRotation_maintainTime = 0f;
         card.MouseEnter_maintainTime = 0f;
         card.MouseEnter_maintainInterval = 1f;
         card.id = ctx.cardCount++;
