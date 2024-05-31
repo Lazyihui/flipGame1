@@ -17,6 +17,13 @@ public static class GameBusiness {
         CardDomain.Spawn(ctx, 3, new Vector3(-4, 4, 0));
         CardDomain.Spawn(ctx, 4, new Vector3(4, -4, 0));
         CardDomain.Spawn(ctx, 5, new Vector3(-4, -4, 0));
+        CardDomain.Spawn(ctx, 6, new Vector3(-8, 4, 0));
+        CardDomain.Spawn(ctx, 7, new Vector3(-8, 0, 0));
+        CardDomain.Spawn(ctx, 8, new Vector3(-8, -4, 0));
+        CardDomain.Spawn(ctx, 5, new Vector3(-8, 8, 0));
+        CardDomain.Spawn(ctx, 6, new Vector3(-4, 8, 0));
+        CardDomain.Spawn(ctx, 7, new Vector3(0, 8, 0));
+        CardDomain.Spawn(ctx, 8, new Vector3(4, 8, 0));
     }
 
 

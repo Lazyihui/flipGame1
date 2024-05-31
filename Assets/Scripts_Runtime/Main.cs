@@ -20,6 +20,8 @@ public class Main : MonoBehaviour {
 
         GameBusiness.Enter(ctx.businessContext);
 
+        
+
     }
 
     float restDT = 0;
