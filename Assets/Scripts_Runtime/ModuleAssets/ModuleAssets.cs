@@ -18,12 +18,26 @@ public static class ModuleAssets {
             ctx.entityPtr = ptr;
 
         }
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "Panel";
+            var ptr = Addressables.LoadAssetsAsync<GameObject>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                ctx.panels.Add(go.name, go);
+            }
+            ctx.panelPtr = ptr;
+
+        }
 
     }
 
     public static void Unload(AssetsContext ctx) {
         if (ctx.entityPtr.IsValid()) {
             Addressables.Release(ctx.entityPtr);
+        }
+        if (ctx.panelPtr.IsValid()) {
+            Addressables.Release(ctx.panelPtr);
         }
     }
 
