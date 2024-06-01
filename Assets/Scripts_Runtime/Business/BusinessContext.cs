@@ -22,12 +22,12 @@ public class BusinessContext {
     public List<CardEntity> cards;
 
 
-    public int cardCount;
+    public int cardIDRecord;
     public BusinessContext() {
         cardRepository = new CardRepository();
         inputEntity = new InputEntity();
         gameEntity = new GameEntity();
-        cardCount = 0;
+        cardIDRecord = 0;
         cards = new List<CardEntity>();
     }
 

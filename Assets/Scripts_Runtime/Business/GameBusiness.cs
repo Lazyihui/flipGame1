@@ -30,28 +30,37 @@ public static class GameBusiness {
             new Vector3Int(4, 8, 0),
         };
 
-        Debug.Log(cards.Count);
+        int[] arrayRandom = new int[16] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+        int[] randomId = new int[16] { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
 
-        for (int i = 0; i < cards.Count; i++) {
-            CardDomain.Spawn(ctx, 1, cards[i]);
+        int count = arrayRandom.Length;
+
+        while (count > 1) {
+            count--;
+            int index = new System.Random().Next(count + 1);
+            Console.WriteLine("index: " + index);
+            int temp = arrayRandom[index];
+            arrayRandom[index] = arrayRandom[count];
+            arrayRandom[count] = temp;
         }
 
-        // CardDomain.Spawn(ctx, 1, new Vector3(0, 0, 0));
-        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 0, 0));
-        // CardDomain.Spawn(ctx, 2, new Vector3(4, 0, 0));
-        // CardDomain.Spawn(ctx, 4, new Vector3(0, 4, 0));
-        // CardDomain.Spawn(ctx, 1, new Vector3(0, -4, 0));
-        // CardDomain.Spawn(ctx, 2, new Vector3(4, 4, 0));
-        // CardDomain.Spawn(ctx, 3, new Vector3(-4, 4, 0));
-        // CardDomain.Spawn(ctx, 4, new Vector3(4, -4, 0));
-        // CardDomain.Spawn(ctx, 5, new Vector3(-4, -4, 0));
-        // CardDomain.Spawn(ctx, 6, new Vector3(-8, 4, 0));
-        // CardDomain.Spawn(ctx, 7, new Vector3(-8, 0, 0));
-        // CardDomain.Spawn(ctx, 8, new Vector3(-8, -4, 0));
-        // CardDomain.Spawn(ctx, 5, new Vector3(-8, 8, 0));
-        // CardDomain.Spawn(ctx, 6, new Vector3(-4, 8, 0));
-        // CardDomain.Spawn(ctx, 7, new Vector3(0, 8, 0));
-        // CardDomain.Spawn(ctx, 8, new Vector3(4, 8, 0));
+        int count1 = randomId.Length;
+
+        while (count1 > 1) {
+            count1--;
+            int index = new System.Random().Next(count1 + 1);
+            Console.WriteLine("index: " + index);
+            int temp = randomId[index];
+            randomId[index] = randomId[count1];
+            randomId[count1] = temp;
+        }
+
+
+
+
+        for (int i = 0; i < cards.Count; i++) {
+            CardDomain.Spawn(ctx, randomId[i], cards[arrayRandom[i]]);
+        }
 
 
     }
@@ -69,7 +78,7 @@ public static class GameBusiness {
             input.isMouseLeftDown = true;
         }
 
-
+        CardDomain.Enter_Rotate(ctx,  dt);
 
 
     }
@@ -79,7 +88,6 @@ public static class GameBusiness {
         for (int i = 0; i < cardLenth; i++) {
             CardEntity card = cards[i];
 
-            CardDomain.Enter_Rotate(ctx, card, dt);
             CardContraller.Tick(ctx, card, dt);
         }
     }

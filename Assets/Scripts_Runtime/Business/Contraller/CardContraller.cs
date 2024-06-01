@@ -42,6 +42,7 @@ public static class CardContraller {
             card.Rotate_Entering = false;
             card.Rotation_maintainTime = 0;
             card.ishasRotate = true;
+            Debug.Log(card.id);
         }
 
 
@@ -55,7 +56,6 @@ public static class CardContraller {
 
 
             CardDomain.RotateDone(ctx, card);
-            card.ishasRotate = false;
             ctx.gameEntity.stepCount++;
             ctx.uiContext.panel_Step.SetStepCount(ctx.gameEntity.stepCount);
 

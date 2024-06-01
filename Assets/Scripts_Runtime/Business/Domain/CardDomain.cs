@@ -32,7 +32,7 @@ public static class CardDomain {
         card.ReRotation_maintainTime = 0f;
         card.MouseEnter_maintainTime = 0f;
         card.MouseEnter_maintainInterval = 1f;
-        card.id = ctx.cardCount++;
+        card.id = ctx.cardIDRecord++;
         card.type = tm.type;
         card.typeName = tm.typeName;
         card.SetMaterial(tm.material);
@@ -44,23 +44,40 @@ public static class CardDomain {
     }
 
     // 鼠标和卡片的交叉检测
-    static bool MouseInsideCard(BusinessContext ctx, CardEntity card) {
+    static CardEntity MouseInsideCard(BusinessContext ctx) {
         Ray ray = ctx.mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
-            if (hit.collider.gameObject == card.gameObject) {
-                return true;
-            }
+
+
+            Debug.Log("鼠标在卡片上");
+            return hit.collider.gameObject.GetComponent<CardEntity>();
         }
-        return false;
+        return null;
     }
     // 如果MouseInsideCard card缓动旋转180度
     // 缓动的转180度
 
-    public static void RotateDone(BusinessContext ctx, CardEntity card) {
-        ctx.cards.Add(card);
 
-        Debug.Log(ctx.cards.Count);
+
+    public static void RotateDone(BusinessContext ctx, CardEntity card) {
+
+
+        CardEntity resultCard = ctx.cards.Find((insideCard) => {
+            if (insideCard.id == card.id) {
+                return true;
+            }
+            return false;
+        });
+
+        if (resultCard != null) {
+            return;
+        }
+
+
+        ctx.cards.Add(card);
+        Debug.Assert(ctx.cards.Count <= 2, "数量不能超过2");
+
 
         int count = ctx.cards.Count;
 
@@ -80,19 +97,23 @@ public static class CardDomain {
                 card1.Enter_ReRetate();
                 card2.Enter_ReRetate();
                 ctx.cards.Clear();
+                card1.ishasRotate = false;
+                card2.ishasRotate = false;
             }
+
         } else {
             card.Enter_Idle();
         }
 
     }
 
-    public static void Enter_Rotate(BusinessContext ctx, CardEntity card, float dt) {
-        if (MouseInsideCard(ctx, card) && Input.GetMouseButtonDown(0)) {
-
-            if (!card.ishasRotate) {
+    public static void Enter_Rotate(BusinessContext ctx, float dt) {
+        if (Input.GetMouseButtonDown(0)) {
+            CardEntity card = MouseInsideCard(ctx);
+            if (card != null && !card.ishasRotate) {
                 card.Enter_Rotate();
             }
+
 
 
         }
