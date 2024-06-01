@@ -6,8 +6,9 @@ using UnityEngine;
 public static class GameBusiness {
 
     public static void Enter(BusinessContext ctx) {
+        ctx.gameEntity.stepCount = 0;
 
-        UIApp.Panel_Step_Open(ctx.uiContext, 10);
+        UIApp.Panel_Step_Open(ctx.uiContext, ctx.gameEntity.stepCount);
 
 
         CardDomain.Spawn(ctx, 1, new Vector3(0, 0, 0));

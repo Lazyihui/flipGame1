@@ -15,6 +15,8 @@ public class BusinessContext {
 
     public InputEntity inputEntity;
 
+    public GameEntity gameEntity;
+
     public CardRepository cardRepository;
 
     public List<CardEntity> cards;
@@ -24,6 +26,7 @@ public class BusinessContext {
     public BusinessContext() {
         cardRepository = new CardRepository();
         inputEntity = new InputEntity();
+        gameEntity = new GameEntity();
         cardCount = 0;
         cards = new List<CardEntity>();
     }
