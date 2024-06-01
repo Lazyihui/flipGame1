@@ -58,6 +58,12 @@ public static class GameBusiness {
             CardContraller.Tick(ctx, card, dt);
 
         }
+        if (Input.GetMouseButtonDown(0)) {
+
+            ctx.gameEntity.stepCount++;
+            ctx.uiContext.panel_Step.SetStepCount(ctx.gameEntity.stepCount);
+
+        }
     }
 
     // static IEnumerator IE(BusinessContext ctx, float dt) {
