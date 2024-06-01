@@ -53,16 +53,7 @@ public static class GameBusiness {
             CardEntity card = cards[i];
 
             CardDomain.Enter_Rotate(ctx, card, dt);
-
-
             CardContraller.Tick(ctx, card, dt);
-
-        }
-        if (Input.GetMouseButtonDown(0)) {
-
-            ctx.gameEntity.stepCount++;
-            ctx.uiContext.panel_Step.SetStepCount(ctx.gameEntity.stepCount);
-
         }
     }
 

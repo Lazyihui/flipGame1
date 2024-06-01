@@ -56,7 +56,8 @@ public static class CardContraller {
 
             CardDomain.RotateDone(ctx, card);
             card.ishasRotate = false;
-
+            ctx.gameEntity.stepCount++;
+            ctx.uiContext.panel_Step.SetStepCount(ctx.gameEntity.stepCount);
 
 
             return;
