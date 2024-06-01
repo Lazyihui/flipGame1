@@ -48,7 +48,6 @@ public static class CardContraller {
         float t = card.Rotation_maintainTime / 1;
         float value = 180 * t;
         card.transform.rotation = Quaternion.Euler(0, value, 0);
-        Debug.Log("1 " + " x=" + card.transform.rotation.eulerAngles.x + " y=" + card.transform.rotation.eulerAngles.y + "  z=" + card.transform.rotation.eulerAngles.z);
 
         card.Rotation_maintainTime += dt;
 

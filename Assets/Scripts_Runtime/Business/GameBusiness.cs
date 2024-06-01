@@ -7,6 +7,8 @@ public static class GameBusiness {
 
     public static void Enter(BusinessContext ctx) {
 
+        UIApp.Panel_Step_Open(ctx.uiContext, 10);
+
 
         CardDomain.Spawn(ctx, 1, new Vector3(0, 0, 0));
         CardDomain.Spawn(ctx, 3, new Vector3(-4, 0, 0));

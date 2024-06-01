@@ -8,6 +8,8 @@ public class BusinessContext {
 
     public TemplateContext templateContext;
 
+    public UIContext uiContext;
+
     public Camera mainCamera;
 
 
@@ -15,7 +17,7 @@ public class BusinessContext {
 
     public CardRepository cardRepository;
 
-    public List<CardEntity> cards; 
+    public List<CardEntity> cards;
 
 
     public int cardCount;
@@ -26,10 +28,11 @@ public class BusinessContext {
         cards = new List<CardEntity>();
     }
 
-    public void Inject(TemplateContext templateContext, AssetsContext assetsContext, Camera mainCamera) {
+    public void Inject(TemplateContext templateContext, AssetsContext assetsContext, Camera mainCamera, UIContext uiContext) {
         this.templateContext = templateContext;
         this.assetsContext = assetsContext;
         this.mainCamera = mainCamera;
+        this.uiContext = uiContext;
     }
 
 }

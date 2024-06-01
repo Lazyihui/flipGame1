@@ -10,17 +10,16 @@ public class Main : MonoBehaviour {
     bool isTearDown = false;
     void Awake() {
         Camera mainCamera = gameObject.transform.Find("Main Camera").GetComponent<Camera>();
-
-
+        Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        
         ctx = new Context();
-        ctx.Inject(mainCamera);
+        ctx.Inject(mainCamera, canvas);
 
         ModuleAssets.Load(ctx.assetsContext);
         TemplateInfras.Load(ctx.templateContext);
 
         GameBusiness.Enter(ctx.businessContext);
 
-        
 
     }
 

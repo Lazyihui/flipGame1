@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2503559465349675796}
   - component: {fileID: 6261250382911261330}
+  - component: {fileID: -2499819943352669062}
   m_Layer: 5
   m_Name: Panel_Step
   m_TagString: Untagged
@@ -125,6 +126,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088997456867728209}
   m_CullTransparentMesh: 1
+--- !u!114 &-2499819943352669062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088997456867728209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530a92373903e694083931fa7ff3f238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepCount: {fileID: 7049855866628966427}
 --- !u!1 &7686365847118008345
 GameObject:
   m_ObjectHideFlags: 0
