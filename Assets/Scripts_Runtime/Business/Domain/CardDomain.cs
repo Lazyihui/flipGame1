@@ -61,9 +61,9 @@ public static class CardDomain {
         ctx.cards.Add(card);
 
         Debug.Log(ctx.cards.Count);
-        
+
         int count = ctx.cards.Count;
-        
+
         if (count == 2) {
 
             CardEntity card1 = ctx.cards[0];
@@ -98,7 +98,12 @@ public static class CardDomain {
         }
     }
 
-    // 前面点击的name和这个name是否一样
+    public static Vector2 RandomCardPosition() {
+        float x = UnityEngine.Random.Range(-8, 8);
+        float y = UnityEngine.Random.Range(-4, 4);
+        return new Vector2(x, y);
+    }
+
 
 
 

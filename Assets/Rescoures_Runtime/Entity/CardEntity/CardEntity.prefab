@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4182243984898002981}
   m_Layer: 0
   m_Name: CardEntity
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,13 +129,14 @@ MonoBehaviour:
   cardFSMStatus: 0
   Idle_Entering: 0
   Rotate_Entering: 0
+  ReRetate_Entering: 0
   mouseEnter_Entering: 0
   mouseExit_Entering: 0
   Rotation_maintainTime: 0
-  Rotation_maintainInterval: 0
+  ReRotation_maintainTime: 0
   MouseEnter_maintainTime: 0
   MouseEnter_maintainInterval: 0
-  MouseInside: 0
+  ishasRotate: 0
 --- !u!1 &5068678533694777958
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ GameObject:
   - component: {fileID: 1073152418561122591}
   m_Layer: 0
   m_Name: back
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +259,7 @@ GameObject:
   - component: {fileID: 5925228663038502590}
   m_Layer: 0
   m_Name: front
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
