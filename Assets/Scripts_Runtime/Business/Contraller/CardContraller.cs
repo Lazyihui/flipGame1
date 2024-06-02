@@ -41,6 +41,8 @@ public static class CardContraller {
         if (card.Rotate_Entering) {
             card.Rotate_Entering = false;
             card.Rotation_maintainTime = 0;
+            card.ReRotation_maintainTime = 0;
+
             card.ishasRotate = true;
         }
 
@@ -70,16 +72,16 @@ public static class CardContraller {
             card.ReRotation_maintainTime = 0;
         }
 
+        const float REROTATE_TIME = 2f;
 
-
-        float t = card.Rotation_maintainTime / 2;
-        float value = 360 * t;
+        float t = card.ReRotation_maintainTime / REROTATE_TIME;
+        float value = 180 * t;
         // 从180度开始转到0
 
-        card.transform.rotation = Quaternion.Euler(0, -value, 0);
+        card.transform.rotation = Quaternion.Euler(0, 180 - value, 0);
 
-        card.Rotation_maintainTime += dt;
-        if (card.Rotation_maintainTime >= 2) {
+        card.ReRotation_maintainTime += dt;
+        if (card.ReRotation_maintainTime >= REROTATE_TIME) {
             card.Enter_Idle();
             return;
 

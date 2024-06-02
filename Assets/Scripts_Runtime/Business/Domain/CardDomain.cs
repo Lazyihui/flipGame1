@@ -50,7 +50,6 @@ public static class CardDomain {
         if (Physics.Raycast(ray, out hit)) {
 
 
-            Debug.Log("鼠标在卡片上");
             return hit.collider.gameObject.GetComponent<CardEntity>();
         }
         return null;
@@ -88,13 +87,11 @@ public static class CardDomain {
             CardEntity card2 = ctx.cards[1];
 
             if (card1.type == card2.type) {
-                Debug.Log("相同");
                 card1.Enter_Idle();
                 card2.Enter_Idle();
                 ctx.cards.Clear();
 
             } else {
-                Debug.Log("不相同");
                 card1.Enter_ReRetate();
                 card2.Enter_ReRetate();
                 ctx.cards.Clear();
