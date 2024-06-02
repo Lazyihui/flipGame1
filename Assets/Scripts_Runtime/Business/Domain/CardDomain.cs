@@ -76,6 +76,7 @@ public static class CardDomain {
 
 
         ctx.cards.Add(card);
+        
         Debug.Assert(ctx.cards.Count <= 2, "数量不能超过2");
 
 

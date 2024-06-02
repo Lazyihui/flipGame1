@@ -11,55 +11,12 @@ public static class GameBusiness {
         UIApp.Panel_Step_Open(ctx.uiContext, ctx.gameEntity.stepCount);
 
         // 随机生成卡片位置
-        List<Vector3Int> cards = new List<Vector3Int> {
-            new Vector3Int(0, 0, 0),
-            new Vector3Int(-4, 0, 0),
-            new Vector3Int(4, 0, 0),
-            new Vector3Int(0, 4, 0),
-            new Vector3Int(0, -4, 0),
-            new Vector3Int(4, 4, 0),
-            new Vector3Int(-4, 4, 0),
-            new Vector3Int(4, -4, 0),
-            new Vector3Int(-4, -4, 0),
-            new Vector3Int(-8, 4, 0),
-            new Vector3Int(-8, 0, 0),
-            new Vector3Int(-8, -4, 0),
-            new Vector3Int(-8, 8, 0),
-            new Vector3Int(-4, 8, 0),
-            new Vector3Int(0, 8, 0),
-            new Vector3Int(4, 8, 0),
-        };
 
-        int[] arrayRandom = new int[16] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-        int[] randomId = new int[16] { 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8 };
+        Common.RandomArray(ctx.arrayRandom);
+        Common.RandomArray(ctx.randomId);
 
-        int count = arrayRandom.Length;
-
-        while (count > 1) {
-            count--;
-            int index = new System.Random().Next(count + 1);
-            Console.WriteLine("index: " + index);
-            int temp = arrayRandom[index];
-            arrayRandom[index] = arrayRandom[count];
-            arrayRandom[count] = temp;
-        }
-
-        int count1 = randomId.Length;
-
-        while (count1 > 1) {
-            count1--;
-            int index = new System.Random().Next(count1 + 1);
-            Console.WriteLine("index: " + index);
-            int temp = randomId[index];
-            randomId[index] = randomId[count1];
-            randomId[count1] = temp;
-        }
-
-
-
-
-        for (int i = 0; i < cards.Count; i++) {
-            CardDomain.Spawn(ctx, randomId[i], cards[arrayRandom[i]]);
+        for (int i = 0; i < ctx.cardVector3s.Count; i++) {
+            CardDomain.Spawn(ctx, ctx.randomId[i], ctx.cardVector3s[ctx.arrayRandom[i]]);
         }
 
 
@@ -78,7 +35,7 @@ public static class GameBusiness {
             input.isMouseLeftDown = true;
         }
 
-        CardDomain.Enter_Rotate(ctx,  dt);
+        CardDomain.Enter_Rotate(ctx, dt);
 
 
     }
