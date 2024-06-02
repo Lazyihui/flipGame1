@@ -42,17 +42,17 @@ public static class CardContraller {
             card.Rotate_Entering = false;
             card.Rotation_maintainTime = 0;
             card.ishasRotate = true;
-            Debug.Log(card.id);
         }
 
+        const float ROTARE_TIME = 1f;
 
-        float t = card.Rotation_maintainTime / 1;
+        float t = card.Rotation_maintainTime / ROTARE_TIME;
         float value = 180 * t;
         card.transform.rotation = Quaternion.Euler(0, value, 0);
 
         card.Rotation_maintainTime += dt;
 
-        if (card.Rotation_maintainTime >= 1) {
+        if (card.Rotation_maintainTime >= ROTARE_TIME) {
 
 
             CardDomain.RotateDone(ctx, card);
