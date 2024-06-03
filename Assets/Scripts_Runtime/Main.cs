@@ -11,18 +11,30 @@ public class Main : MonoBehaviour {
     void Awake() {
         Camera mainCamera = gameObject.transform.Find("Main Camera").GetComponent<Camera>();
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        
+
         ctx = new Context();
         ctx.Inject(mainCamera, canvas);
 
         ModuleAssets.Load(ctx.assetsContext);
         TemplateInfras.Load(ctx.templateContext);
 
+        UIApp.Panel_Login_Open(ctx.uiContext);
+
+        binding();
+
         GameBusiness.Enter(ctx.businessContext);
 
 
     }
+    void binding() {
+        var uiEvents = ctx.uiContext.uiEvents;
 
+        uiEvents.OnStartHandle = () => {
+            UIApp.Panel_Login_Close(ctx.uiContext);
+            GameBusiness.Enter(ctx.businessContext);
+        };
+
+    }
     float restDT = 0;
     void Update() {
         float dt = Time.deltaTime;

@@ -5,12 +5,18 @@ public class UIContext {
 
     public Panel_Step panel_Step;
 
+    public Panel_Login panel_Login;
+
+    public UIEvents uiEvents;
 
     //  Inject
     public Canvas canvas;
 
     public AssetsContext assetsContext;
-    public UIContext() { }
+    public UIContext() { 
+        uiEvents = new UIEvents();
+
+    }
 
     public void Inject(Canvas canvas,AssetsContext assetsContext) {
         this.canvas = canvas;
