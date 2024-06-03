@@ -11,25 +11,25 @@ public class Main : MonoBehaviour {
     void Awake() {
         Camera mainCamera = gameObject.transform.Find("Main Camera").GetComponent<Camera>();
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-
+        //  === Init ===
         ctx = new Context();
+        // === Inject ===
         ctx.Inject(mainCamera, canvas);
 
+        // === Load ===
         ModuleAssets.Load(ctx.assetsContext);
         TemplateInfras.Load(ctx.templateContext);
 
         UIApp.Panel_Login_Open(ctx.uiContext);
-
+        // === Binding ===
         binding();
-
-        GameBusiness.Enter(ctx.businessContext);
-
 
     }
     void binding() {
         var uiEvents = ctx.uiContext.uiEvents;
 
         uiEvents.OnStartHandle = () => {
+            ctx.businessContext.gameEntity.gameFSMSStatus = GameFSMStatus.Game;
             UIApp.Panel_Login_Close(ctx.uiContext);
             GameBusiness.Enter(ctx.businessContext);
         };
@@ -37,26 +37,45 @@ public class Main : MonoBehaviour {
     }
     float restDT = 0;
     void Update() {
+
+
+
+
         float dt = Time.deltaTime;
 
-        GameBusiness.PreTick(ctx.businessContext, dt);
+        GameFSMStatus status = ctx.businessContext.gameEntity.gameFSMSStatus;
 
-        restDT += dt;
+        if (status == GameFSMStatus.Login) {
 
-        float fixedDT = Time.fixedDeltaTime; // 0.02
-        restDT += dt;// 0.0083 (0.0000000001, 10)
-        if (restDT >= fixedDT) {
-            while (restDT >= fixedDT) {
-                restDT -= fixedDT;
-                FixedTick(fixedDT);
+        } else if (status == GameFSMStatus.Game) {
+
+
+            GameBusiness.PreTick(ctx.businessContext, dt);
+
+            restDT += dt;
+
+            float fixedDT = Time.fixedDeltaTime; // 0.02
+            restDT += dt;// 0.0083 (0.0000000001, 10)
+            if (restDT >= fixedDT) {
+                while (restDT >= fixedDT) {
+                    restDT -= fixedDT;
+                    FixedTick(fixedDT);
+                }
+            } else {
+                FixedTick(restDT);
+                restDT = 0;
             }
-        } else {
-            FixedTick(restDT);
-            restDT = 0;
+
+            // LateTick
+            GameBusiness.LateTick(ctx.businessContext, dt);
+
+        } else if (status == GameFSMStatus.GameOver) {
+
         }
 
-        // LateTick
-        GameBusiness.LateTick(ctx.businessContext, dt);
+
+
+
     }
 
     void FixedTick(float dt) {
