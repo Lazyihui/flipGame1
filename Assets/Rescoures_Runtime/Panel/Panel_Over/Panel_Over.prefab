@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 4057856497212480347}
   - component: {fileID: 6558492936961192900}
   m_Layer: 5
-  m_Name: Stepnum
+  m_Name: StepCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 7593719796456106764}
   - component: {fileID: 7574611214167796641}
   m_Layer: 5
-  m_Name: Btn_next
+  m_Name: Btn_ReStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 995720573264830554}
   - component: {fileID: 3925135140076076942}
   m_Layer: 5
-  m_Name: Goalnum
+  m_Name: GoalCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -806,6 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7014680477605771057}
   - component: {fileID: 901411864272629426}
+  - component: {fileID: 739356659597226003}
   m_Layer: 5
   m_Name: Panel_Over
   m_TagString: Untagged
@@ -841,6 +842,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7375012757827735602}
   m_CullTransparentMesh: 1
+--- !u!114 &739356659597226003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375012757827735602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d53a54cf888e644cbb22c88bcb0ff52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn_Restart: {fileID: 7574611214167796641}
+  btn_Over: {fileID: 3286606808930317028}
+  txt_StepCount: {fileID: 6558492936961192900}
+  txt_GoalCount: {fileID: 3925135140076076942}
 --- !u!1 &7589103351179378937
 GameObject:
   m_ObjectHideFlags: 0

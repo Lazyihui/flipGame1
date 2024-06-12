@@ -34,6 +34,12 @@ public class Main : MonoBehaviour {
             GameBusiness.Enter(ctx.businessContext);
         };
 
+        uiEvents.OnRestartHandle = () => {
+            ctx.businessContext.gameEntity.gameFSMSStatus = GameFSMStatus.Game;
+            UIApp.Panel_Over_Close(ctx.uiContext);
+            GameBusiness.Enter(ctx.businessContext);
+        };
+
     }
     float restDT = 0;
     void Update() {
@@ -82,6 +88,14 @@ public class Main : MonoBehaviour {
         // === Phase:Logic===
         GameBusiness.FixedTick(ctx.businessContext, dt);
         // === phade: Simulate===
+        // 需要重构一下
+        if (ctx.businessContext.gameEntity.hasRotateCardnum >= 16) {
+
+            ctx.businessContext.gameEntity.gameFSMSStatus = GameFSMStatus.GameOver;
+            UIApp.Panel_Over_Open(ctx.uiContext, ctx.businessContext.gameEntity.stepCount);
+
+        }
+
     }
 
     void OnApplicationQuit() {

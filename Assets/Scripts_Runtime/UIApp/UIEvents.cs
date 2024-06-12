@@ -12,7 +12,13 @@ public class UIEvents {
     }
 
 
+    public Action OnRestartHandle;
 
+    public void Over_RestartGame() {
+        if (OnRestartHandle != null) {
+            OnRestartHandle.Invoke();
+        }
+    }
 
 
 

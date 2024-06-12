@@ -52,5 +52,33 @@ public static class UIApp {
         }
     }
 
+    public static void Panel_Over_Open(UIContext ctx, int stepCount) {
+        Panel_Over panel = ctx.panel_Over;
+        if (panel == null) {
+            bool has = ctx.assetsContext.TryGetPanel("Panel_Over", out GameObject prefab);
+            if (!has) {
+                Debug.LogError("Panel_Over not found");
+                return;
+            }
+            panel = GameObject.Instantiate(prefab, ctx.canvas.transform).GetComponent<Panel_Over>();
+            panel.Ctor();
+            panel.SetStepCount(stepCount);
+            panel.OnRestartHandle = () => {
+                ctx.uiEvents.Over_RestartGame();
+            };
+        }
+        ctx.panel_Over = panel;
+        panel.Show();
+
+    }
+
+    public static void Panel_Over_Close(UIContext ctx) {
+        Panel_Over panel = ctx.panel_Over;
+        if (panel != null) {
+            panel.Close();
+        }
+    }
+
+
 
 }
