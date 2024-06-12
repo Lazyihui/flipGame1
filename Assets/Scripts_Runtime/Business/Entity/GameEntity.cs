@@ -7,4 +7,6 @@ public class GameEntity {
     public GameFSMStatus gameFSMSStatus;
     public int stepCount;
 
+    public int hasRotateCardnum;
+
 }

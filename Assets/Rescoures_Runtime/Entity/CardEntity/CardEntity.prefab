@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6073325916370943060}
   - component: {fileID: 8044288978397386927}
   - component: {fileID: 4182243984898002981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CardEntity
   m_TagString: Card
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8504192359985166402}
   - component: {fileID: 1490348907353425350}
   - component: {fileID: 1138056321819204130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: back
   m_TagString: Card
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 6971846398665740608}
   - component: {fileID: 5878039344235243244}
   - component: {fileID: 1658568983961615557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: front
   m_TagString: Card
   m_Icon: {fileID: 0}

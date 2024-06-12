@@ -47,13 +47,12 @@ public static class GameBusiness {
 
             CardContraller.Tick(ctx, card, dt);
         }
+        if(ctx.gameEntity.hasRotateCardnum>=16){
+            Debug.Log("youxiejieshu");
+        }
+
     }
 
-    // static IEnumerator IE(BusinessContext ctx, float dt) {
-    //     yield return new WaitForSeconds(1f);
-    //     CardDomain.CardIsEqual(ctx, dt);
-
-    // }
 
     public static void LateTick(BusinessContext ctx, float dt) {
 

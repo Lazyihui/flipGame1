@@ -75,7 +75,7 @@ public static class CardDomain {
 
 
         ctx.cards.Add(card);
-        
+
         Debug.Assert(ctx.cards.Count <= 2, "数量不能超过2");
 
 
@@ -90,6 +90,7 @@ public static class CardDomain {
                 card1.Enter_Idle();
                 card2.Enter_Idle();
                 ctx.cards.Clear();
+                ctx.gameEntity.hasRotateCardnum += 2;
 
             } else {
                 card1.Enter_ReRetate();
@@ -123,7 +124,20 @@ public static class CardDomain {
         return new Vector2(x, y);
     }
 
+    // 查找所有的卡片看是否都旋转完了 用来结束游戏
 
+    // public static bool AllCardRotate(BusinessContext ctx) {
+
+    //     int cardLen = ctx.cardRepository.TakeAll(out CardEntity[] cards);
+
+    //     for (int i = 0; i < cardLen; i++) {
+    //         CardEntity card = cards[i];
+    //         if(card)
+    //     }
+
+
+    //     return false;
+    // }
 
 
 }
