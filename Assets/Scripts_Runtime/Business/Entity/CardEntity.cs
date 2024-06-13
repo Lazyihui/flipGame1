@@ -37,6 +37,10 @@ public class CardEntity : MonoBehaviour {
     public bool ishasRotate;
     public void Ctor() { }
 
+    public void TearDown() {
+        GameObject.Destroy(gameObject);
+    }
+
     public void SetMaterial(Material material) {
         meshRenderer.material = material;
     }

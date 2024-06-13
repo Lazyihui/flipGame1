@@ -43,6 +43,13 @@ public static class CardDomain {
 
     }
 
+    public static void Destroy(BusinessContext ctx, CardEntity card) {
+        ctx.cardRepository.Remove(card);
+        card.TearDown();
+
+    }
+
+
     // 鼠标和卡片的交叉检测
     static CardEntity MouseInsideCard(BusinessContext ctx) {
         Ray ray = ctx.mainCamera.ScreenPointToRay(Input.mousePosition);

@@ -76,7 +76,7 @@ public class Main : MonoBehaviour {
             GameBusiness.LateTick(ctx.businessContext, dt);
 
         } else if (status == GameFSMStatus.GameOver) {
-
+            
         }
 
 
@@ -92,7 +92,23 @@ public class Main : MonoBehaviour {
         if (ctx.businessContext.gameEntity.hasRotateCardnum >= 16) {
 
             ctx.businessContext.gameEntity.gameFSMSStatus = GameFSMStatus.GameOver;
+            // 疑问 它这个打开是不是运行的很多遍
             UIApp.Panel_Over_Open(ctx.uiContext, ctx.businessContext.gameEntity.stepCount);
+
+            // 清空数据
+            ctx.businessContext.gameEntity.hasRotateCardnum = 0;
+            ctx.businessContext.gameEntity.stepCount = 0;
+
+            // 清空卡片
+            int cardLenth = ctx.businessContext.cardRepository.TakeAll(out CardEntity[] cards);
+            for (int i = 0; i < cardLenth; i++) {
+                CardEntity card = cards[i];
+                CardDomain.Destroy(ctx.businessContext, card);
+            }
+
+            
+
+
 
         }
 

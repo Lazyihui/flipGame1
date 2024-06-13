@@ -47,9 +47,6 @@ public static class GameBusiness {
 
             CardContraller.Tick(ctx, card, dt);
         }
-        if(ctx.gameEntity.hasRotateCardnum>=16){
-            Debug.Log("youxiejieshu");
-        }
 
     }
 
